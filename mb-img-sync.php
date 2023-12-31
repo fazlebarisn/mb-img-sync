@@ -24,10 +24,27 @@ add_action( 'admin_enqueue_scripts', 'mb_all_img_sync' );
 /**
  * Add menu page for this plugin
  */
+// function mb_all_img_sync_menu_pages(){
+//     add_submenu_page( 'users.php', 'Mb All Img Sync', 'Mb All Img Sync ', 'manage_options', 'mbai-sync', 'mbai_sync_page' );
+// }
+// add_action( 'admin_menu', 'mb_all_img_sync_menu_pages' );
+
+/**
+ * Add a menu in wordpress product menu
+ */
 function mb_all_img_sync_menu_pages(){
-    add_submenu_page( 'users.php', 'Mb All Img Sync', 'Mb All Img Sync ', 'manage_options', 'mbai-sync', 'mbai_sync_page' );
+
+    //add sub menu in product menu for sync product categories
+    add_submenu_page(
+        'mb_syncs',
+        'Mb All Img Sync',
+        'Mb All Img Sync',
+        'manage_options',
+        'mbai-sync',
+        'mbai_sync_page'
+    );
 }
-add_action( 'admin_menu', 'mb_all_img_sync_menu_pages' );
+add_action('admin_menu', 'mb_all_img_sync_menu_pages', 999);
 
 
 /**
